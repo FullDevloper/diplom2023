@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./src/index.js",
+    "start": "node ./src/index.js",
     "dev": " cross-env NODE_ENV=development  nodemon ./src/index.js"
   },
   "keywords": [],
@@ -17,6 +17,8 @@
     "nodemon": "^3.0.1"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -25,6 +27,10 @@
     "express-fileupload": "^1.4.0",
     "express-mongo-sanitize": "^2.2.0",
     "helmet": "^7.0.0",
-    "morgan": "^1.10.0"
+    "http-errors": "^2.0.0",
+    "mongoose": "^7.5.2",
+    "morgan": "^1.10.0",
+    "validator": "^13.11.0",
+    "winston": "^3.10.0"
   }
 }
