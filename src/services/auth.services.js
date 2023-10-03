@@ -1,6 +1,7 @@
 import createHttpError from "http-errors";
 import validator from "validator";
 import {UserModel} from "../models/index.js";
+import bcrypt from "bcrypt"
 export const createUser =async(userData)=>{
     const {name,email,picture,status,password}=userData;
     if(!name || !email || !password)
@@ -39,4 +40,15 @@ export const createUser =async(userData)=>{
         name,email,picture:picture || "",status:status || "users",password
     }).save()
  return user
+}
+export const signUser=async(email,password)=>{
+    const user =await UserModel.findOne({email:email.toLowerCase()}).lean()
+    if(!user)
+    {
+        throw createHttpError.NotFound("Бүртгэлгүй байна.")
+    }
+let passwordMatches=await bcrypt.compare(password,user.password)
+if(!passwordMatches)
+throw createHttpError.NotFound("Нууц үг буруу байна.")
+return user
 }
