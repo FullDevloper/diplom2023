@@ -27,7 +27,7 @@ export const createUser =async(userData)=>{
     const checkDb =await UserModel.findOne({email})
     if(checkDb)
     {
-        throw createHttpError.Conflict('Бүртгэлтэй и-мэйл байна.')
+        throw createHttpError(409,'Бүртгэлтэй')
     }
     // passcheck
     if(!validator.isLength(password,{
