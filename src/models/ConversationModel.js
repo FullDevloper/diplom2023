@@ -13,8 +13,8 @@ const conversationSchema = mongoose.Schema(
     },
     isGroup: {
       type: Boolean,
-      required: true,
-      default: false,
+
+      default: false
     },
     users: [
       {
