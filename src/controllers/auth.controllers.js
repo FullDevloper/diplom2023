@@ -81,7 +81,7 @@ export const login =async(req,res,next)=>{
         path:'/api/v1/auth/refreshtoken',
         maxAge:30*24*60*60*1000
       })
-      console.log("amjilttai")
+   
       res.status(200).json({message:"success",user: {
         _id: user._id,
         name: user.name,
@@ -97,7 +97,7 @@ export const login =async(req,res,next)=>{
 }
 export const logout =async()=>{
    try{
-// res.clearCookie('refreshtoken',{path:"api/v1/auth/refreshtoken"})
+res.clearCookie('refreshtoken',{path:"api/v1/auth/refreshtoken"})
 res.status(200).json({message:"log out"})
    }catch(error){
 
