@@ -1,7 +1,7 @@
 import { doesConversationExist,createConversation,populateConversation,getUserConversations } from "../services/conversation.service.js"
 // import {findUser} from "../services/user.sevices.js"
 export const create_open_conversation = async (req, res, next) => {
-    console.log(req.body);
+    console.log(req.body,"create");
     try {
       const sender_id = req.user.userId;
       const { receiver_id, isGroup } = req.body;
@@ -27,7 +27,8 @@ export const create_open_conversation = async (req, res, next) => {
         } 
          else {
             // res.send("oks")
-        // //   let receiver_user = await findUser(receiver_id);
+          // let receiver_user = await findUser(receiver_id);
+          // console.log(receiver_user,"A")
 
           let convoData = {
             name: "conversation name",
@@ -35,7 +36,7 @@ export const create_open_conversation = async (req, res, next) => {
             isGroup: false,
             users: [sender_id, receiver_id],
           };
-          console.log(convoData,"sss")
+          // console.log(convoData,"sss")
           const newConvo = await createConversation(convoData);
           const populatedConvo = await populateConversation(
             newConvo._id,
@@ -45,14 +46,14 @@ export const create_open_conversation = async (req, res, next) => {
           res.status(200).json(populatedConvo);
          }
       } else {
-        console.log("hnaaaaaaaaaa");
+        // console.log("hnaaaaaaaaaa");
         
         const existed_group_conversation = await doesConversationExist(
           "",
           "",
           isGroup
         );
-        console.log(isGroup)
+        // console.log(isGroup)
         res.status(200).json(existed_group_conversation);
       }
     } catch (error) {

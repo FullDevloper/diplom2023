@@ -10,7 +10,7 @@ import fileUpload from "express-fileupload";
 import bodyParser from "body-parser"
 import createHttpError from "http-errors";
 import cors from "cors"
-import connectDB from "./configs/db.js";
+// import connectDB from "./configs/db.js";
 // Routes
 import routes from "./routes/index.js"
 // import logger from "./configs/logger.js";
@@ -31,11 +31,10 @@ app.use(ExpressMongoSanitize())
 app.use(cookieParser())
 app.use(compression())
 app.use(cors())
-// connectDB()
+
 
 app.post('/test2',(req,res)=>{
    
-    // res.send(req.body.name)
      throw createHttpError.BadRequest("this route errors",404)
  }
  )
