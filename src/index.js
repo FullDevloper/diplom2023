@@ -39,8 +39,8 @@ const io = new Server(server, {
     //     console.log("message sent to backend",msg)
     //     io.emit("receiveMessage",msg)
     // })
-    // SocketServer(socket, io);
-    SocketServer(socket)
+    SocketServer(socket, io);
+    // SocketServer(socket)
 
   });
 const exitHandler = () => {
